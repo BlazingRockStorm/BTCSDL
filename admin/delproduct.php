@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 	<head>
 		<title>Admin</title>
 		<link href="<?php echo $app_path.'homestyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">
@@ -29,9 +29,25 @@
 				
 				<input type="submit" value="OK" />
 				</form>
+				<div id="bieu_mau">
+					<form name="del_form" action="." method="post" enctype="multipart/form-data">
+					<input type="hidden" name="choice" value="del_product">
+					<ul>
+						<fieldset style="text-align: left"> 
+			
+						<legend style="font-weight: bold">Xóa sản phẩm</legend>
+						<li>Tên sản phẩm: <input name="del_name" type="text" size="25" maxlength="40"/>
+						<?php echo $fields->getField('del_name')->getHTML(); ?><p/> </li>
+						<li><input type="submit" value="Xóa"/><p/></li>
+			
+						</fieldset>
+					</ul>
+					</form>	
+				</div>
+		
 			</div>
 			</div>
-		<?php include '../view/footer.php';?>
-		</div>
+	<?php include '../view/footer.php';?>
+	</div>
 	</body>
 </html>

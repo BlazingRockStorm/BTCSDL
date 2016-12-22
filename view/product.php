@@ -9,7 +9,9 @@
     $description = $product['description'];
     $list_price = $product['price'];
     $discount_percent = $product['discountpercent'];
-
+	$emlink = $product['emlink'];
+	$country = $product['country'];
+	$branch = $product['branch'];
     // Add HMTL tags to the description
     $description_with_tags = add_tags($description);
 
@@ -29,6 +31,7 @@
 ?>
 
 <h1><?php echo htmlspecialchars($product_name); ?></h1>
+
 <div id="left_column"><a class="caption" href="#" data-title="Vulture" data-description="lalala">
     <img src="<?php echo $image_path; ?>"
             alt="<?php echo $image_alt; ?>"  width="500px"/>
@@ -36,6 +39,8 @@
 </div>
 
 <div id="right_column">
+    <h2>Mô tả</h2>
+    <?php echo $description_with_tags; ?>
     <p><b>Giá gốc:</b>
         <?php echo  $list_price . ' Đồng'; ?></p>
     <p><b>Giảm giá:</b>
@@ -53,8 +58,10 @@
         <input type="submit" value="Add to Cart" class="fa fa-car" id="AtCbutton" />
     </form>
 	<br></br>
-    <h2>Mô tả</h2>
-    <?php echo $description_with_tags; ?>
-    <h2>Video</h2>
-        <iframe src="https://www.youtube.com/embed/vpelqHoxTxE" allowfullscreen="allowfullscreen" style="height: 200px"></iframe><!--Thay bằng các link đọc từ CSDL-->
+	<p><b>Quốc gia:</b>
+    <?php echo $country; ?></p>
+	<p><b>Nhãn hiệu:</b>
+    <?php echo $branch; ?></p>
+    <p><b>Video sản phẩm</b>
+        <iframe src="<?php echo $emlink;?>" allowfullscreen="allowfullscreen" style="width: 400px; height: 300px"></iframe><!--Thay bằng các link đọc từ CSDL--></p>
 </div>

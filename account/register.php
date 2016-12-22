@@ -1,7 +1,7 @@
 ﻿<html>
 	<head>
 		<title>Đăng ký thành viên</title>
-		<link href="\BTLCSDLver4-1\image\logo.jpg" rel="icon" type="image/jpg">
+		<link href="\BTLCSDLver13\image\logo.jpg" rel="icon" type="image/jpg">
 		<link href="<?php echo $app_path.'homestyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">
 		<link href="<?php echo $app_path.'loginstyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">
 	</head>
@@ -40,7 +40,7 @@
 						value="<?php echo htmlspecialchars($email); ?>" size="30">
 						<?php echo $fields->getField('email')->getHTML(); ?>
 					</p>
-					
+					<!--
 					<p class="clearfix"><label>Số điện thoại</label>
 						<input type="text" name="phone"
 						value="<?php echo htmlspecialchars($phone); ?>" size="30">
@@ -67,7 +67,7 @@
 						value="<?php echo htmlspecialchars($zipcode); ?>" size="30">
 						<?php echo $fields->getField('zipcode')->getHTML(); ?>
 					</p>
-					
+					-->
 					<p><input type="submit" name="submit" value="Đăng ký"></p>
 				
 				</ul>

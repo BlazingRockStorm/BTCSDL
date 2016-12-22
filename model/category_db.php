@@ -19,7 +19,24 @@ function get_categories() {
         display_db_error($error_message);
     }
 }
-
+function get_categoryid($categoryname) {
+    global $db;
+    $query = "
+        SELECT *
+        FROM categories
+        WHERE categoryname = :categoryname";
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':categoryname', $categoryname);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
 function get_category($category_id) {
     global $db;
     $query = "

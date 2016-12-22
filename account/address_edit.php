@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>Address edit</title>
+		<link href="\BTLCSDLver13\image\logo.jpg" rel="icon" type="image/jpg">
 		<link href="<?php echo $app_path.'homestyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">
 	</head>
 	<body>

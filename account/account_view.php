@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>Account view</title>
+		<link href="\BTLCSDLver13\image\logo.jpg" rel="icon" type="image/jpg">
 		<link href="<?php echo $app_path.'homestyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">
 	</head>
 	<body>
@@ -17,7 +18,7 @@
 				<input type="submit" value="Edit Account">
 				</form>
 				
-				<h3>Bill Address</h3>
+				<h2>Địa chỉ</h2>
 				<p>
 				<?php echo htmlspecialchars($address['city']); ?>, <?php 
 				echo htmlspecialchars($address['district']); ?>,
@@ -30,11 +31,12 @@
 				<form action="." method="post">
 				<input type="hidden" name="action" value="view_address_edit">
 				<input type="hidden" name="address_type" value="billing">
-				<input type="submit" value="Edit billing Address">
+				<input type="submit" value="Edit Address">
 				</form>
 
 				<?php if (count($orders) > 0 ) : ?>
-				<h2>Your Orders</h2>
+				<h2>Đơn hàng của bạn</h2>
+				
 				<ul>
 				<?php foreach($orders as $order) :
 				$order_id = $order['orderid'];
@@ -50,8 +52,9 @@
 				<?php echo $order_date; ?>
 				</li>
 				<?php endforeach; ?>
-				<?php endif; ?>
 				</ul>
+				
+				<?php endif; ?>
 			</div>
 			</div>
 		<?php include 'view/footer.php';?>

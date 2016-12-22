@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>My Guitar Shop</title>
-		<link href="\BTLCSDLver4-1\image\logo.jpg" rel="icon" type="image/jpg">
+		<link href="\BTLCSDLver13\image\logo.jpg" rel="icon" type="image/jpg">
 		<link href="<?php echo $app_path.'homestyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">
 	</head>
 	<body>
@@ -9,7 +9,7 @@
 			<?php 	header('Content-Type: text/html;charset=UTF-8'); 
 					include 'view/header.php';?>
 			<div id="pagebody">	
-				<div id="show_sp">
+				<div id="show_cate">
 					<table cellspacing="20px">
 						<h1><?php echo htmlspecialchars($category_name); ?></h1>
 							<?php if (count($products) == 0) : ?>

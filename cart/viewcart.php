@@ -2,7 +2,7 @@
 
 	<head>
 		<title>View cart</title>
-		<link href="\BTLCSDLver4-3\image\logo.jpg" rel="icon" type="image/jpg">
+		<link href="\BTLCSDLver13\image\logo.jpg" rel="icon" type="image/jpg">
 		<link href="<?php echo $app_path.'homestyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">
 		<link href="<?php echo $app_path.'loginstyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">	
 	</head>
@@ -96,8 +96,9 @@
 				<a href="<?php echo $address_edit_url;?>">Chỉnh sửa địa chỉ</a>
 				
 				<p>
-				<form name="checkout" action="" method="get" enctype="multipart/form-data">
-							<input id="buybutton" type="button" value="Xác nhận mua hàng" onclick="alert('Cảm ơn bạn đã đặt hàng! Chúng tôi sẽ xác nhận lại thông qua điện thoại và tiến hành giao hàng sớm. Chúc bạn một ngày vui vẻ.')"/>
+				<form name="checkout" action="." method="get" enctype="multipart/form-data">
+							<input type="hidden" name="action" value="add_order">
+							<input id="buybutton" type="submit" value="Xác nhận mua hàng" />
 				</form>
 				</p>
 				

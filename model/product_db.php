@@ -20,6 +20,35 @@ function get_products_by_category($category_id) {
     }
 }
 
+
+function delete_product_by_name($productname){
+	global $db;
+	$query = "DELETE FROM products WHERE productname = :productname";
+	try{
+		$statement = $db->prepare($query);
+		$statement->bindValue(':productname', $productname);
+		$statement->execute();
+		$statement->closeCursor();
+	}catch (PDOException $e) {
+		$error_message = $e->getMessage();
+		display_db_error($error_message);
+	}
+}
+function get_all_products(){
+	global $db;
+	$query = "SELECT * FROM products ORDER BY productid ASC";
+	try{
+		$statement = $db->prepare($query);
+		$statement->execute();
+		$result = $statement->fetchAll();
+		$statement->closeCursor();
+		return $result;
+	}catch (PDOException $e) {
+		$error_message = $e->getMessage();
+		display_db_error($error_message);
+	}
+}
+
 function get_product($product_id) {
     global $db;
     $query = "

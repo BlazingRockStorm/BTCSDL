@@ -1,7 +1,7 @@
 <?php
 require_once '../util/main.php';
 require_once 'util/validation.php';
-
+require_once 'model/order_db.php';
 require_once 'model/cart.php';
 require_once 'model/product_db.php';
 require_once 'model/customer_db.php';
@@ -44,6 +44,17 @@ switch ($action) {
         }
         $cart = cart_get_items();
         break;
+	case 'add_order':
+		$cart = cart_get_items();
+		$price = cart_subtotal();
+		//echo $price;
+		$orderid = add_order($price);
+		//echo $orderid;
+		foreach ($cart as $product_id => $item){
+			add_order_item($orderid, $product_id,$item['quantity']);
+		}
+		//redirect('.');
+		break;
 	/*case 'goBack':
 		window.history.back();
 		break;

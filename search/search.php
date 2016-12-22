@@ -1,65 +1,88 @@
-<html>
-	<head>
-		<title>My Guitar Shop</title>
-		<link href="<?php echo $app_path.'homestyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">
-	</head>
-	<body>
-		<div id="container">
-			<?php 	header('Content-Type: text/html;charset=UTF-8'); 
-					include 'view/header.php';?>
-			<div id="pagebody">
-				<div id="show_sp">
-					<form name="search" action="." method="post" enctype="multipart/form-data">
-					<p>Từ khóa: <input name="key" type="text" size="15" maxlength="20" 
-								value="<?php echo htmlspecialchars($key); ?>"/><p/>
-								<?php echo $fields->getField('key')->getHTML(); ?><br>
-					<input id="buybutton" type="submit" value="OK" />
-					</form> 
-					
-					<table cellspacing="20px">
-						
-							<?php if (count($products1) == 0) : ?>
-								<p>There are no products in this page.</p>
-							<?php else: ?>
-							<?php foreach ($products1 as $product) : 
-							$list_price = $product['price'];
-							$discount_percent = $product['discountpercent'];
-							$description = $product['description'];
-        
-							// Calculate unit price
-							$discount_amount = round($list_price * ($discount_percent / 100.0), 2);
-							$unit_price = $list_price - $discount_amount;
+<?php
+/*
+$dbHost = 'localhost';
+$dbUsername = 'root';
+$dbPassword = '';
+$dbName = 'codexworld';
+//connect with the database
+$db = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName);
+//get search term
+$searchTerm = $_GET['term'];
+//get matched data from skills table
+$query = $db->query("SELECT * FROM skills WHERE skill LIKE '%".$searchTerm."%' ORDER BY skill ASC");
+while ($row = $query->fetch_assoc()) {
+    $data[] = $row['skill'];
+}
+*/
+//return json data
+//echo json_encode($data);
+require_once('search_db.php');
+$searchTerm = $_GET['term'];
+$user = 'postgres'; 
+$pass = 'password';
+$db = new PDO('pgsql:dbname=guitar_shop host=localhost port=5432', $user, $pass);
 
-							// Get first paragraph of description
-							$description_with_tags = add_tags($description);
-							$i = strpos($description_with_tags, "</p>");
-							$first_paragraph = substr($description_with_tags, 3, $i-3);        
-							?>
-						<tr>
-							<td align="center">
-								<img src="../image/<?php echo htmlspecialchars($product['productid']); ?>.jpg" alt="sp1" height="150" width="150" >
-							</td>
-							<td width="400">
-								<p>
-									<a href="<?php echo $app_path.'catalog?product_id'?>=<?php echo $product['productid']; ?>">
-										<?php echo htmlspecialchars($product['productname']); ?>
-									</a>
-								</p>
-								<p>
-									Giá <?php echo number_format($unit_price, 2); ?> Đ
-								</p>
-								<p>
-									<?php echo $first_paragraph; ?>
-								</p>
-							</td>
-						</tr>
-						<?php endforeach; ?>
-					<?php endif; ?>
-				</table>
-						
-				</div>
-			</div>
-			<?php include 'view/footer.php';?>
-		</div>
-	</body>
-</html>
+//$results = search_from_skills($searchTerm);
+$results = get_product_from_key($searchTerm);
+$lists = array();
+foreach($results as $result){
+	$lists[] = $result['productname'];
+}
+if($searchTerm == 'key'){
+$list = array(
+        "Autocomplete",
+        "AJAX is fun!",
+        "Alphabeth",
+        "Alphanumeric",
+        "Bravo",
+        "Charlie",
+        "Connection",
+        "Delta",
+        "Echo",
+        "Internetprotocol",
+        "IP-Address",
+        "Geo-IP",
+        "GPU",
+        "CPU",
+        "Foxtrott",
+        "Tango",
+        "Torpedo",
+        "TCP-Protocol",
+        "Shark",
+        "Shakespeare",
+        "Speed",
+        "South",
+        "So",
+        "X-Ray",
+        "Yankee",
+        "Zulu",
+        "Monkey",
+        "Mike",
+        "Microphone",
+        "Metapher",
+        "Metatag");
+}
+ echo json_encode($lists);
+
+
+/*
+$user = 'postgres'; 
+$pass = 'admiral1996';
+$db = new PDO('pgsql:dbname=codexworld host=localhost port=5433', $user, $pass);
+
+$searchTerm = $_GET['term'];
+echo $searchTerm;
+//$searchTerm = strtolower($searchTerm);
+//echo 1;
+$query = $db->query("SELECT * FROM skills WHERE skill LIKE '%$searchTerm%' ORDER BY skill ASC");
+$statement = $db->prepare($query);
+$statement->execute();
+$results = $statement->fetchAll();
+//$statement->closeCursor();
+$data = array();
+foreach($results as $result){
+	$data[] = $result['skill'];
+}
+
+echo json_encode($data);*/
+?>

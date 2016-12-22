@@ -26,7 +26,15 @@ function is_valid_customer_login($email, $password) {
     $statement->closeCursor();
     return $valid;
 }
-
+function get_all_customer() {
+    global $db;
+    $query = "SELECT * FROM customers ORDER BY customerid";
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $customer = $statement->fetchAll();
+    $statement->closeCursor();
+    return $customer;
+}
 function get_customer($customer_id) {
     global $db;
     $query = "SELECT * FROM customers WHERE customerid = :customer_id";
@@ -97,5 +105,22 @@ function get_address($customer_id) {
 	$address = $statement->fetch();
 	$statement->closeCursor();
 	return 	$address;				  
-}									  
+}
+
+function delete_customer($customerid) {					  
+	global $db;
+	$query = "DELETE FROM orders WHERE customerid = :customerid";
+	$statement = $db->prepare($query);
+	$statement->bindValue(':customerid',$customerid);
+	$statement->execute();
+	$query = "DELETE FROM addresses WHERE customerid = :customerid";
+	$statement = $db->prepare($query);
+	$statement->bindValue(':customerid',$customerid);
+	$statement->execute();
+	$query = "DELETE FROM customers WHERE customerid = :customerid";
+	$statement = $db->prepare($query);
+	$statement->bindValue(':customerid',$customerid);
+	$statement->execute();
+	$statement->closeCursor();		  
+}														  
 ?>

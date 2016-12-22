@@ -1,7 +1,7 @@
 ﻿<html>
 	<head>
 		<title>Log In</title>
-		<link href="\BTLCSDLver4-1\image\logo.jpg" rel="icon" type="image/jpg">
+		<link href="\BTLCSDLver13\image\logo.jpg" rel="icon" type="image/jpg">
 		<link href="<?php echo $app_path.'homestyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">
 		<link href="<?php echo $app_path.'loginstyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">
 		<link href="https://fonts.googleapis.com/css?family=Pacifico|Pinyon+Script" rel="stylesheet"> 
@@ -20,7 +20,7 @@
 						<input type="text" name="email" id="login" value="<?php echo htmlspecialchars($email); ?>" size="30" placeholder="Email đăng nhập">
 						<?php echo $fields->getField('email')->getHTML(); ?><br>
 						</p>
-
+	
 						<p class="clearfix">
 						<label for="password">Mật khẩu</label>
 						<input type="password" name="password" id="password" placeholder="Mật khẩu" size="30">

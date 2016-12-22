@@ -1,6 +1,7 @@
-<html>
+﻿<html>
 	<head>
 		<title>Account edit</title>
+		<link href="\BTLCSDLver13\image\logo.jpg" rel="icon" type="image/jpg">
 		<link href="<?php echo $app_path.'homestyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">
 	</head>
 	<body>
@@ -19,17 +20,16 @@
 								value="<?php echo htmlspecialchars($email); ?>">
 							<?php echo $fields->getField('email')->getHTML(); ?><br></li>
 			
-							<li><label>Name:</label>
-							<input type="text" name="name" 
-							value="<?php echo htmlspecialchars($name); ?>">
+							<li><label>Tên:</label>
+							<input type="text" name="name" >
 							<?php echo $fields->getField('name')->getHTML(); ?><br></li>
 
-							<li><label>New Password:</label>
+							<li><label>Mật khẩu mới:</label>
 							<input type="password" name="password_1">&nbsp;&nbsp;
 							<?php echo $fields->getField('password_1')->getHTML(); ?>
 							<span class="error"><?php echo $password_message; ?></span><br></li>
 
-							<li><label>Retype Password:</label>
+							<li><label>Xác nhận lại mật khẩu:</label>
 							<input type="password" name="password_2">
 							<?php echo $fields->getField('password_2')->getHTML(); ?><br></li>
 
