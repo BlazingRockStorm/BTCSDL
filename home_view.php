@@ -1,7 +1,7 @@
 ﻿<html>
 	<head>
 		<title>My Guitar Shop</title>
-		<link href="\BTLCSDLver4-5\image\logo.jpg" rel="icon" type="image/jpg">
+		<link href="\BTLCSDLver13\image\logo.jpg" rel="icon" type="image/jpg">
 		<link href="<?php echo $app_path.'homestyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">
 		<link href="<?php echo $app_path.'loginstyle.css';?>" rel="stylesheet" type="text/css" media="screen,print">
 		<link href="https://fonts.googleapis.com/css?family=Pacifico|Pinyon+Script" rel="stylesheet"> 
@@ -13,7 +13,7 @@
 			
 			<div id="pagebody">											
 				<div id="tit"><h1>The sound of your soul</h1> 							
-				<a href="/BTLCSDLver4-5/admin/admin.php">Admin</a></div>				
+				</div>		
 				<!--<form class="form-3">
 					<p class="clearfix">
 						<label for="login">Tên</label>
@@ -33,8 +33,11 @@
 				</form>
 				-->
 				<div id="featured_products">
-					<h2>Sản phầm MỚI!!!</h2>
-					<h3><br/>Danh sách các mặt hàng được nhập trong tháng này của cửa hàng</h3>
+					<h2>FEATURED PRODUCTS</h2>
+					<h3><br/>We have a great selection of musical instruments
+					including guitars, basses, and drums. And we're 
+					constantly adding more to give you the best 
+					selection possible!</h3>
 					<table cellspacing="20px">
 					<?php foreach ($products as $product) :
 						// Get product data
